@@ -40,8 +40,8 @@ Developed for high-context AI agent environments (**Google Antigravity**, **Clau
 ## Architecture
 
 ```mermaid
-graph TD
-    User([IDE / Agent Prompt]) --> MCP[MCP Server: manage-core (stdio)]
+flowchart TD
+    User([IDE / Agent Prompt]) --> MCP["MCP Server: manage-core (stdio)"]
     
     subgraph Tools ["Exposed MCP Tools"]
         MCP --> RAGSearch["rag_search(query, project)"]
@@ -53,9 +53,9 @@ graph TD
     end
 
     subgraph Storage ["Local Zero-Cost Storage (~/.rag_memory/)"]
-        RAGSearch & RAGIndex --> VectorDB[("SQLite Vectors (rag_vectors.db)<br/>BLOB + BM25 + RRF")]
-        MemRecall & MemUpsert & MemReplace --> MemoryDB[("SQLite WAL (global_memory.db)<br/>FTS5 unicode61 + History")]
-        SkillLoad --> SkillsDir["skills/<name>/SKILL.md (Jailed)"]
+        RAGSearch & RAGIndex --> VectorDB[("SQLite Vectors: rag_vectors.db<br/>BLOB + BM25 + RRF")]
+        MemRecall & MemUpsert & MemReplace --> MemoryDB[("SQLite WAL: global_memory.db<br/>FTS5 unicode61 + History")]
+        SkillLoad --> SkillsDir["skills/name/SKILL.md (Jailed)"]
     end
 ```
 
